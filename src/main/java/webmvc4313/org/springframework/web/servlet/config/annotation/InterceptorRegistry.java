@@ -30,7 +30,7 @@ import org.springframework.web.servlet.handler.WebRequestHandlerInterceptorAdapt
  * @author Keith Donald
  * @since 3.1
  */
-public class InterceptorRegistry {
+public class InterceptorRegistry { //拦截器注册处，包含多个拦截器的注册
 
 	private final List<InterceptorRegistration> registrations = new ArrayList<InterceptorRegistration>();
 
@@ -41,7 +41,7 @@ public class InterceptorRegistry {
 	 * @return An {@link InterceptorRegistration} that allows you optionally configure the
 	 * registered interceptor further for example adding URL patterns it should apply to.
 	 */
-	public InterceptorRegistration addInterceptor(HandlerInterceptor interceptor) {
+	public InterceptorRegistration addInterceptor(HandlerInterceptor interceptor) { //添加处理器拦截器
 		InterceptorRegistration registration = new InterceptorRegistration(interceptor);
 		this.registrations.add(registration);
 		return registration;
@@ -53,8 +53,8 @@ public class InterceptorRegistry {
 	 * @return An {@link InterceptorRegistration} that allows you optionally configure the
 	 * registered interceptor further for example adding URL patterns it should apply to.
 	 */
-	public InterceptorRegistration addWebRequestInterceptor(WebRequestInterceptor interceptor) {
-		WebRequestHandlerInterceptorAdapter adapted = new WebRequestHandlerInterceptorAdapter(interceptor);
+	public InterceptorRegistration addWebRequestInterceptor(WebRequestInterceptor interceptor) { //添加web请求拦截器
+		WebRequestHandlerInterceptorAdapter adapted = new WebRequestHandlerInterceptorAdapter(interceptor); //通过一个适配器将WebRequestInterceptor适配成HandlerInterceptor
 		InterceptorRegistration registration = new InterceptorRegistration(adapted);
 		this.registrations.add(registration);
 		return registration;

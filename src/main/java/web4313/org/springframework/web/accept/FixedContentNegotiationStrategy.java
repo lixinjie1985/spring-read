@@ -32,7 +32,7 @@ import org.springframework.web.context.request.NativeWebRequest;
  * @since 3.2
  */
 public class FixedContentNegotiationStrategy implements ContentNegotiationStrategy {
-
+	//固定内容协商策略
 	private static final Log logger = LogFactory.getLog(FixedContentNegotiationStrategy.class);
 
 	private final List<MediaType> contentType;
@@ -41,7 +41,7 @@ public class FixedContentNegotiationStrategy implements ContentNegotiationStrate
 	/**
 	 * Create an instance with the given content type.
 	 */
-	public FixedContentNegotiationStrategy(MediaType contentType) {
+	public FixedContentNegotiationStrategy(MediaType contentType) { //人工指定一个确定的MediaType
 		this.contentType = Collections.singletonList(contentType);
 	}
 

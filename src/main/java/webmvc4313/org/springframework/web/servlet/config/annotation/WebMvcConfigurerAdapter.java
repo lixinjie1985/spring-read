@@ -39,7 +39,7 @@ public abstract class WebMvcConfigurerAdapter implements WebMvcConfigurer {
 	 * {@inheritDoc}
 	 * <p>This implementation is empty.
 	 */
-	@Override
+	@Override //配置路径匹配
 	public void configurePathMatch(PathMatchConfigurer configurer) {
 	}
 
@@ -47,7 +47,7 @@ public abstract class WebMvcConfigurerAdapter implements WebMvcConfigurer {
 	 * {@inheritDoc}
 	 * <p>This implementation is empty.
 	 */
-	@Override
+	@Override //配置内容协商
 	public void configureContentNegotiation(ContentNegotiationConfigurer configurer) {
 	}
 
@@ -55,7 +55,7 @@ public abstract class WebMvcConfigurerAdapter implements WebMvcConfigurer {
 	 * {@inheritDoc}
 	 * <p>This implementation is empty.
 	 */
-	@Override
+	@Override //配置异步支持
 	public void configureAsyncSupport(AsyncSupportConfigurer configurer) {
 	}
 
@@ -63,7 +63,7 @@ public abstract class WebMvcConfigurerAdapter implements WebMvcConfigurer {
 	 * {@inheritDoc}
 	 * <p>This implementation is empty.
 	 */
-	@Override
+	@Override //配置默认Servlet处理器
 	public void configureDefaultServletHandling(DefaultServletHandlerConfigurer configurer) {
 	}
 
@@ -71,7 +71,7 @@ public abstract class WebMvcConfigurerAdapter implements WebMvcConfigurer {
 	 * {@inheritDoc}
 	 * <p>This implementation is empty.
 	 */
-	@Override
+	@Override //添加格式化器
 	public void addFormatters(FormatterRegistry registry) {
 	}
 
@@ -79,7 +79,7 @@ public abstract class WebMvcConfigurerAdapter implements WebMvcConfigurer {
 	 * {@inheritDoc}
 	 * <p>This implementation is empty.
 	 */
-	@Override
+	@Override //添加拦截器
 	public void addInterceptors(InterceptorRegistry registry) {
 	}
 
@@ -87,7 +87,7 @@ public abstract class WebMvcConfigurerAdapter implements WebMvcConfigurer {
 	 * {@inheritDoc}
 	 * <p>This implementation is empty.
 	 */
-	@Override
+	@Override //添加资源处理器
 	public void addResourceHandlers(ResourceHandlerRegistry registry) {
 	}
 
@@ -103,7 +103,7 @@ public abstract class WebMvcConfigurerAdapter implements WebMvcConfigurer {
 	 * {@inheritDoc}
 	 * <p>This implementation is empty.
 	 */
-	@Override
+	@Override //添加视图控制器
 	public void addViewControllers(ViewControllerRegistry registry) {
 	}
 
@@ -111,7 +111,7 @@ public abstract class WebMvcConfigurerAdapter implements WebMvcConfigurer {
 	 * {@inheritDoc}
 	 * <p>This implementation is empty.
 	 */
-	@Override
+	@Override //添加视图解析器
 	public void configureViewResolvers(ViewResolverRegistry registry) {
 	}
 
@@ -119,7 +119,7 @@ public abstract class WebMvcConfigurerAdapter implements WebMvcConfigurer {
 	 * {@inheritDoc}
 	 * <p>This implementation is empty.
 	 */
-	@Override
+	@Override //添加处理器方法实参解析器
 	public void addArgumentResolvers(List<HandlerMethodArgumentResolver> argumentResolvers) {
 	}
 
@@ -127,7 +127,7 @@ public abstract class WebMvcConfigurerAdapter implements WebMvcConfigurer {
 	 * {@inheritDoc}
 	 * <p>This implementation is empty.
 	 */
-	@Override
+	@Override //添加处理器方法返回值处理器
 	public void addReturnValueHandlers(List<HandlerMethodReturnValueHandler> returnValueHandlers) {
 	}
 
@@ -135,7 +135,7 @@ public abstract class WebMvcConfigurerAdapter implements WebMvcConfigurer {
 	 * {@inheritDoc}
 	 * <p>This implementation is empty.
 	 */
-	@Override
+	@Override //配置http消息转换器
 	public void configureMessageConverters(List<HttpMessageConverter<?>> converters) {
 	}
 
@@ -143,7 +143,7 @@ public abstract class WebMvcConfigurerAdapter implements WebMvcConfigurer {
 	 * {@inheritDoc}
 	 * <p>This implementation is empty.
 	 */
-	@Override
+	@Override //扩展http消息转换器
 	public void extendMessageConverters(List<HttpMessageConverter<?>> converters) {
 	}
 
@@ -151,7 +151,7 @@ public abstract class WebMvcConfigurerAdapter implements WebMvcConfigurer {
 	 * {@inheritDoc}
 	 * <p>This implementation is empty.
 	 */
-	@Override
+	@Override //配置处理器异常解析器
 	public void configureHandlerExceptionResolvers(List<HandlerExceptionResolver> exceptionResolvers) {
 	}
 
@@ -159,7 +159,7 @@ public abstract class WebMvcConfigurerAdapter implements WebMvcConfigurer {
 	 * {@inheritDoc}
 	 * <p>This implementation is empty.
 	 */
-	@Override
+	@Override //扩展处理器异常解析器
 	public void extendHandlerExceptionResolvers(List<HandlerExceptionResolver> exceptionResolvers) {
 	}
 
@@ -167,7 +167,7 @@ public abstract class WebMvcConfigurerAdapter implements WebMvcConfigurer {
 	 * {@inheritDoc}
 	 * <p>This implementation returns {@code null}.
 	 */
-	@Override
+	@Override //配置验证器
 	public Validator getValidator() {
 		return null;
 	}
@@ -176,7 +176,7 @@ public abstract class WebMvcConfigurerAdapter implements WebMvcConfigurer {
 	 * {@inheritDoc}
 	 * <p>This implementation returns {@code null}.
 	 */
-	@Override
+	@Override //配置消息码解析器
 	public MessageCodesResolver getMessageCodesResolver() {
 		return null;
 	}

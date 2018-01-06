@@ -42,15 +42,15 @@ import org.springframework.web.servlet.ModelAndView;
  * @author Brian Clozel
  * @since 3.0
  */
-public final class MappedInterceptor implements HandlerInterceptor {
+public final class MappedInterceptor implements HandlerInterceptor { //该类其实就是个代理
 
-	private final String[] includePatterns;
+	private final String[] includePatterns; //需要拦截的路径
 
-	private final String[] excludePatterns;
+	private final String[] excludePatterns; //需要排除的路径
 
-	private final HandlerInterceptor interceptor;
+	private final HandlerInterceptor interceptor; //真正的拦截器
 
-	private PathMatcher pathMatcher;
+	private PathMatcher pathMatcher; //路径匹配器
 
 
 	/**
@@ -135,8 +135,8 @@ public final class MappedInterceptor implements HandlerInterceptor {
 		PathMatcher pathMatcherToUse = (this.pathMatcher != null) ? this.pathMatcher : pathMatcher;
 		if (this.excludePatterns != null) {
 			for (String pattern : this.excludePatterns) {
-				if (pathMatcherToUse.match(pattern, lookupPath)) {
-					return false;
+				if (pathMatcherToUse.match(pattern, lookupPath)) { //使用路径匹配器
+					return false; //匹配该请求路径是否应该不拦截
 				}
 			}
 		}
@@ -145,8 +145,8 @@ public final class MappedInterceptor implements HandlerInterceptor {
 		}
 		else {
 			for (String pattern : this.includePatterns) {
-				if (pathMatcherToUse.match(pattern, lookupPath)) {
-					return true;
+				if (pathMatcherToUse.match(pattern, lookupPath)) { //使用路径匹配器
+					return true; //匹配该请求路径是否应该被拦截
 				}
 			}
 			return false;

@@ -34,14 +34,14 @@ import org.springframework.web.context.request.NativeWebRequest;
  * @since 3.2
  */
 public class HeaderContentNegotiationStrategy implements ContentNegotiationStrategy {
-
+	//Header内容协商策略
 	/**
 	 * {@inheritDoc}
 	 * @throws HttpMediaTypeNotAcceptableException if the 'Accept' header cannot be parsed
 	 */
 	@Override
 	public List<MediaType> resolveMediaTypes(NativeWebRequest request)
-			throws HttpMediaTypeNotAcceptableException {
+			throws HttpMediaTypeNotAcceptableException { //从Http Header中解析出接受的MediaType
 
 		String[] headerValueArray = request.getHeaderValues(HttpHeaders.ACCEPT);
 		if (headerValueArray == null) {

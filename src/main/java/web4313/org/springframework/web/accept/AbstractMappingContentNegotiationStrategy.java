@@ -70,14 +70,14 @@ public abstract class AbstractMappingContentNegotiationStrategy extends MappingM
 			throws HttpMediaTypeNotAcceptableException {
 
 		if (StringUtils.hasText(key)) {
-			MediaType mediaType = lookupMediaType(key);
+			MediaType mediaType = lookupMediaType(key); //根据扩展名查询MediaType
 			if (mediaType != null) {
 				handleMatch(key, mediaType);
 				return Collections.singletonList(mediaType);
 			}
-			mediaType = handleNoMatch(webRequest, key);
+			mediaType = handleNoMatch(webRequest, key); //从请求中解析出MediaType
 			if (mediaType != null) {
-				addMapping(key, mediaType);
+				addMapping(key, mediaType); //把此对映射关系添加到底层Map中缓存起来
 				return Collections.singletonList(mediaType);
 			}
 		}
@@ -88,7 +88,7 @@ public abstract class AbstractMappingContentNegotiationStrategy extends MappingM
 	/**
 	 * Extract a key from the request to use to look up media types.
 	 * @return the lookup key, or {@code null} if none
-	 */
+	 */ //从请求中解析出文件扩展名
 	protected abstract String getMediaTypeKey(NativeWebRequest request);
 
 	/**

@@ -58,7 +58,7 @@ import org.springframework.ui.ModelMap;
  * @see org.springframework.web.portlet.handler.AbstractHandlerMapping#setApplyWebRequestInterceptorsToRenderPhaseOnly
  * @see org.springframework.web.portlet.HandlerInterceptor
  */
-public interface WebRequestInterceptor {
+public interface WebRequestInterceptor { //web请求拦截器，属于spring-web里面的概念，只能拦截处理器
 
 	/**
 	 * Intercept the execution of a request handler <i>before</i> its invocation.

@@ -34,8 +34,8 @@ import org.springframework.web.servlet.ModelAndView;
  * @see org.springframework.web.context.request.WebRequestInterceptor
  * @see org.springframework.web.servlet.HandlerInterceptor
  */
-public class WebRequestHandlerInterceptorAdapter implements AsyncHandlerInterceptor {
-
+public class WebRequestHandlerInterceptorAdapter implements AsyncHandlerInterceptor { //该类是个适配器
+	//将WebRequestInterceptor适配成一个HandlerInterceptor，外层对HandlerInterceptor方法的调用世界转化为对WebRequestInterceptor方法的调用
 	private final WebRequestInterceptor requestInterceptor;
 
 

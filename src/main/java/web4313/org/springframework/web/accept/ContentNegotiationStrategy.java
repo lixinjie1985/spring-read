@@ -28,7 +28,7 @@ import org.springframework.web.context.request.NativeWebRequest;
  * @author Rossen Stoyanchev
  * @since 3.2
  */
-public interface ContentNegotiationStrategy {
+public interface ContentNegotiationStrategy { //内容协商策略
 
 	/**
 	 * Resolve the given request to a list of media types. The returned list is
@@ -39,6 +39,6 @@ public interface ContentNegotiationStrategy {
 	 * types cannot be parsed
 	 */
 	List<MediaType> resolveMediaTypes(NativeWebRequest webRequest)
-			throws HttpMediaTypeNotAcceptableException;
+			throws HttpMediaTypeNotAcceptableException; //从请求中解析出接受的MediaType
 
 }

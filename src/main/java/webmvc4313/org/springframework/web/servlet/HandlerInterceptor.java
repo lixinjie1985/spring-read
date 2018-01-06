@@ -72,8 +72,8 @@ import org.springframework.web.method.HandlerMethod;
  * @see org.springframework.web.servlet.theme.ThemeChangeInterceptor
  * @see javax.servlet.Filter
  */
-public interface HandlerInterceptor {
-
+public interface HandlerInterceptor { //处理器拦截器，只能拦截处理器（Controller的方法）
+		//处理器拦截器是spring-web里面的概念，Filter是Servlet里面的概念，范围要宽广的多
 	/**
 	 * Intercept the execution of a handler. Called after HandlerMapping determined
 	 * an appropriate handler object, but before HandlerAdapter invokes the handler.
