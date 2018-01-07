@@ -32,12 +32,12 @@ import org.springframework.web.context.request.NativeWebRequest;
  *
  * @author Rossen Stoyanchev
  * @since 3.2
- */
+ */ //从请求参数中解析出文件扩展名
 public class ParameterContentNegotiationStrategy extends AbstractMappingContentNegotiationStrategy {
 
 	private static final Log logger = LogFactory.getLog(ParameterContentNegotiationStrategy.class);
 
-	private String parameterName = "format";
+	private String parameterName = "format"; //默认的请求参数名称
 
 
 	/**
@@ -51,7 +51,7 @@ public class ParameterContentNegotiationStrategy extends AbstractMappingContentN
 	/**
 	 * Set the name of the parameter to use to determine requested media types.
 	 * <p>By default this is set to {@code "format"}.
-	 */
+	 */ //可以修改默认请求参数的名称
 	public void setParameterName(String parameterName) {
 		Assert.notNull(parameterName, "'parameterName' is required");
 		this.parameterName = parameterName;
@@ -62,12 +62,12 @@ public class ParameterContentNegotiationStrategy extends AbstractMappingContentN
 	}
 
 
-	@Override
+	@Override //从请求中获取指定参数名称的值，作为文件扩展名，该扩展名最后会映射成MediaType
 	protected String getMediaTypeKey(NativeWebRequest request) {
 		return request.getParameter(getParameterName());
 	}
 
-	@Override
+	@Override //可以映射出一个MediaType，打印个日志
 	protected void handleMatch(String mediaTypeKey, MediaType mediaType) {
 		if (logger.isDebugEnabled()) {
 			logger.debug("Requested media type: '" + mediaType + "' based on '" +
@@ -75,7 +75,7 @@ public class ParameterContentNegotiationStrategy extends AbstractMappingContentN
 		}
 	}
 
-	@Override
+	@Override //无法映射出一个MediaType，抛出异常
 	protected MediaType handleNoMatch(NativeWebRequest request, String key)
 			throws HttpMediaTypeNotAcceptableException {
 

@@ -51,7 +51,7 @@ import org.springframework.web.util.UrlPathHelper;
  *
  * @author Rossen Stoyanchev
  * @since 3.2
- */
+ */ //从路径中获取文件扩展名
 public class PathExtensionContentNegotiationStrategy extends AbstractMappingContentNegotiationStrategy {
 
 	private static final boolean JAF_PRESENT = ClassUtils.isPresent("javax.activation.FileTypeMap",
@@ -110,7 +110,7 @@ public class PathExtensionContentNegotiationStrategy extends AbstractMappingCont
 	}
 
 
-	@Override
+	@Override //从路径中解析出文件扩展名
 	protected String getMediaTypeKey(NativeWebRequest webRequest) {
 		HttpServletRequest request = webRequest.getNativeRequest(HttpServletRequest.class);
 		if (request == null) {
@@ -126,7 +126,7 @@ public class PathExtensionContentNegotiationStrategy extends AbstractMappingCont
 	protected MediaType handleNoMatch(NativeWebRequest webRequest, String extension)
 			throws HttpMediaTypeNotAcceptableException {
 
-		if (this.useJaf && JAF_PRESENT) {
+		if (this.useJaf && JAF_PRESENT) { //从spring-context-support jar包模块中根据文件扩展名解析出MediaType
 			MediaType mediaType = ActivationMediaTypeFactory.getMediaType("file." + extension);
 			if (mediaType != null && !MediaType.APPLICATION_OCTET_STREAM.equals(mediaType)) {
 				return mediaType;
