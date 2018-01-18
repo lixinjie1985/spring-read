@@ -88,7 +88,7 @@ import org.springframework.web.accept.PathExtensionContentNegotiationStrategy;
  * @author Juergen Hoeller
  * @since 3.2
  * @see ContentNegotiationManagerFactoryBean
- */
+ */ //内容协商配置器，客户端如何指定自己想要的内容类型，可通过路径扩展名，请求参数，请求Header
 public class ContentNegotiationConfigurer {
 
 	private final ContentNegotiationManagerFactoryBean factory = new ContentNegotiationManagerFactoryBean();
@@ -110,7 +110,7 @@ public class ContentNegotiationConfigurer {
 	 * <p>By default this is set to {@code true} in which case a request
 	 * for {@code /hotels.pdf} will be interpreted as a request for
 	 * {@code "application/pdf"} regardless of the 'Accept' header.
-	 */
+	 */ //开启采用路径中的扩展名来决定内容类型（其实已经默认开启）
 	public ContentNegotiationConfigurer favorPathExtension(boolean favorPathExtension) {
 		this.factory.setFavorPathExtension(favorPathExtension);
 		return this;
@@ -130,7 +130,7 @@ public class ContentNegotiationConfigurer {
 	 * @param mediaType the media type
 	 * @see #mediaTypes(Map)
 	 * @see #replaceMediaTypes(Map)
-	 */
+	 */ //从这里加进去的文件扩展名，同时也作为白名单，可以通过入侵检测
 	public ContentNegotiationConfigurer mediaType(String extension, MediaType mediaType) {
 		this.mediaTypes.put(extension, mediaType);
 		return this;
@@ -140,7 +140,7 @@ public class ContentNegotiationConfigurer {
 	 * An alternative to {@link #mediaType}.
 	 * @see #mediaType(String, MediaType)
 	 * @see #replaceMediaTypes(Map)
-	 */
+	 */ //和上面的方法一样
 	public ContentNegotiationConfigurer mediaTypes(Map<String, MediaType> mediaTypes) {
 		if (mediaTypes != null) {
 			this.mediaTypes.putAll(mediaTypes);
@@ -152,7 +152,7 @@ public class ContentNegotiationConfigurer {
 	 * Similar to {@link #mediaType} but for replacing existing mappings.
 	 * @see #mediaType(String, MediaType)
 	 * @see #mediaTypes(Map)
-	 */
+	 */ //替换掉所有已经存在的
 	public ContentNegotiationConfigurer replaceMediaTypes(Map<String, MediaType> mediaTypes) {
 		this.mediaTypes.clear();
 		mediaTypes(mediaTypes);
@@ -164,7 +164,7 @@ public class ContentNegotiationConfigurer {
 	 * to any media type. Setting this to {@code false} will result in an
 	 * {@code HttpMediaTypeNotAcceptableException} if there is no match.
 	 * <p>By default this is set to {@code true}.
-	 */
+	 */ //是否忽略未知的路径扩展名，不忽略的话会导致一个异常
 	public ContentNegotiationConfigurer ignoreUnknownPathExtensions(boolean ignore) {
 		this.factory.setIgnoreUnknownPathExtensions(ignore);
 		return this;
@@ -176,7 +176,7 @@ public class ContentNegotiationConfigurer {
 	 * extension to a specific MediaType.
 	 * <p>By default this is not set in which case
 	 * {@code PathExtensionContentNegotiationStrategy} will use JAF if available.
-	 */
+	 */ //是否使用JAF来解析路径扩展名，默认没有开启
 	public ContentNegotiationConfigurer useJaf(boolean useJaf) {
 		this.factory.setUseJaf(useJaf);
 		return this;
@@ -188,7 +188,7 @@ public class ContentNegotiationConfigurer {
 	 * register {@link #mediaType(String, MediaType) media type mappings}.
 	 * <p>By default this is set to {@code false}.
 	 * @see #parameterName(String)
-	 */
+	 */ //是否启用从请求参数中获取扩展名来解析内容类型，默认为开启
 	public ContentNegotiationConfigurer favorParameter(boolean favorParameter) {
 		this.factory.setFavorParameter(favorParameter);
 		return this;
@@ -197,7 +197,7 @@ public class ContentNegotiationConfigurer {
 	/**
 	 * Set the query parameter name to use when {@link #favorParameter} is on.
 	 * <p>The default parameter name is {@code "format"}.
-	 */
+	 */ //设置请求参数中表示扩展名的参数名称，默认是format
 	public ContentNegotiationConfigurer parameterName(String parameterName) {
 		this.factory.setParameterName(parameterName);
 		return this;
@@ -206,7 +206,7 @@ public class ContentNegotiationConfigurer {
 	/**
 	 * Whether to disable checking the 'Accept' request header.
 	 * <p>By default this value is set to {@code false}.
-	 */
+	 */ //是否禁用从header中解析内容类型，默认没有禁用
 	public ContentNegotiationConfigurer ignoreAcceptHeader(boolean ignoreAcceptHeader) {
 		this.factory.setIgnoreAcceptHeader(ignoreAcceptHeader);
 		return this;
@@ -216,7 +216,7 @@ public class ContentNegotiationConfigurer {
 	 * Set the default content type to use when no content type is requested.
 	 * <p>By default this is not set.
 	 * @see #defaultContentTypeStrategy
-	 */
+	 */ //设置默认的内容类型，当没有内容类型被请求时使用，默认没有设置
 	public ContentNegotiationConfigurer defaultContentType(MediaType defaultContentType) {
 		this.factory.setDefaultContentType(defaultContentType);
 		return this;
@@ -228,7 +228,7 @@ public class ContentNegotiationConfigurer {
 	 * <p>By default this is not set.
 	 * @see #defaultContentType
 	 * @since 4.1.2
-	 */
+	 */ //设置一个默认的内容协商策略，当没有内容类型被请求时使用，默认没有设置
 	public ContentNegotiationConfigurer defaultContentTypeStrategy(ContentNegotiationStrategy defaultStrategy) {
 		this.factory.setDefaultContentTypeStrategy(defaultStrategy);
 		return this;
@@ -239,7 +239,7 @@ public class ContentNegotiationConfigurer {
 	 * Build a {@link ContentNegotiationManager} based on this configurer's settings.
 	 * @since 4.3.12
 	 * @see ContentNegotiationManagerFactoryBean#getObject()
-	 */
+	 */ //根据配置构建一个内容协商管理器
 	protected ContentNegotiationManager buildContentNegotiationManager() {
 		this.factory.addMediaTypes(this.mediaTypes);
 		this.factory.afterPropertiesSet();

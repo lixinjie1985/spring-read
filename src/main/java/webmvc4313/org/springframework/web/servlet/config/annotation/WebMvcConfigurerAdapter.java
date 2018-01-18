@@ -47,7 +47,7 @@ public abstract class WebMvcConfigurerAdapter implements WebMvcConfigurer {
 	 * {@inheritDoc}
 	 * <p>This implementation is empty.
 	 */
-	@Override //配置内容协商
+	@Override //配置内容协商，从请求信息中决定请求内容的类型（即响应内容类型）
 	public void configureContentNegotiation(ContentNegotiationConfigurer configurer) {
 	}
 

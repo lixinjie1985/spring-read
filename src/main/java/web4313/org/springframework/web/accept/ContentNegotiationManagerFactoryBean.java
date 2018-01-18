@@ -87,22 +87,22 @@ import org.springframework.web.context.ServletContextAware;
  * @author Rossen Stoyanchev
  * @author Brian Clozel
  * @since 3.2
- */
+ */ //用来生成一个内容协商管理器
 public class ContentNegotiationManagerFactoryBean
 		implements FactoryBean<ContentNegotiationManager>, ServletContextAware, InitializingBean {
-
+	//从路径扩展名，默认开启
 	private boolean favorPathExtension = true;
-
+	//从请求参数，默认关闭
 	private boolean favorParameter = false;
-
+	//忽略从header，默认关闭
 	private boolean ignoreAcceptHeader = false;
 
 	private Map<String, MediaType> mediaTypes = new HashMap<String, MediaType>();
-
+	//忽略未知扩展名，默认开启
 	private boolean ignoreUnknownPathExtensions = true;
 
 	private Boolean useJaf;
-
+	//请求参数默认名称format
 	private String parameterName = "format";
 
 	private ContentNegotiationStrategy defaultNegotiationStrategy;
@@ -252,7 +252,7 @@ public class ContentNegotiationManagerFactoryBean
 	@Override
 	public void afterPropertiesSet() {
 		List<ContentNegotiationStrategy> strategies = new ArrayList<ContentNegotiationStrategy>();
-
+		//如果开启了路径扩展名
 		if (this.favorPathExtension) {
 			PathExtensionContentNegotiationStrategy strategy;
 			if (this.servletContext != null && !isUseJafTurnedOff()) {
@@ -267,21 +267,21 @@ public class ContentNegotiationManagerFactoryBean
 			}
 			strategies.add(strategy);
 		}
-
+		//如果开启了请求参数
 		if (this.favorParameter) {
 			ParameterContentNegotiationStrategy strategy = new ParameterContentNegotiationStrategy(this.mediaTypes);
 			strategy.setParameterName(this.parameterName);
 			strategies.add(strategy);
 		}
-
+		//如果没有忽略header
 		if (!this.ignoreAcceptHeader) {
 			strategies.add(new HeaderContentNegotiationStrategy());
 		}
-
+		//如果有默认的内容协商策略
 		if (this.defaultNegotiationStrategy != null) {
 			strategies.add(this.defaultNegotiationStrategy);
 		}
-
+		//生成一个内容协商管理器
 		this.contentNegotiationManager = new ContentNegotiationManager(strategies);
 	}
 

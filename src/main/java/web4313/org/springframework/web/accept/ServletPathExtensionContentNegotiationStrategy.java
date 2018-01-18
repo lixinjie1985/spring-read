@@ -32,7 +32,7 @@ import org.springframework.web.context.request.NativeWebRequest;
  *
  * @author Rossen Stoyanchev
  * @since 3.2
- */
+ */ //去ServletContext中解析从路径中解析出来的扩展名
 public class ServletPathExtensionContentNegotiationStrategy extends PathExtensionContentNegotiationStrategy {
 
 	private final ServletContext servletContext;
